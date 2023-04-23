@@ -73,9 +73,93 @@
                     </div>
                 </div>
                 
-                <div class="main-block" id="crud">
+<!--                <div class="main-block" id="crud">
                     
-                </div>
+                </div>-->
+                <form method="post" action="algorithmcontrol" class="main-block">
+
+                        <h2 id="heading">Chỉnh sửa thông tin nhân viên</h1>
+
+<!--                        <div id="form-top" class="form-block">
+
+                            <div class="form-item2" class="form-item1">
+                                <label class="form-label" for="type_algorithm">Thuật toán</label>
+                                <div id="radio1" class="form-radio">
+                                    <input type="radio" name="type_algorithm" value="1" checked> BFS<br>
+                                    <input type="radio" name="type_algorithm" value="0" > DFS</br>
+                                </div>
+                            </div>
+
+                            <div class="form-item2" class="form-item1">
+                                <label class="form-label" id="form-label-top" for="direction">Chiều</label>
+                                <div id="radio2" class="form-radio">
+                                    <input type="radio" name="direction" value="1" checked> Có hướng<br>
+                                    <input type="radio" name="direction" value="0" > Vô hướng</br>
+                                </div>
+                            </div>
+
+                        </div>-->
+
+                        <div id="form-left" class="form-block">
+
+                            <div class="form-item1">
+                                <label class="form-label" for="id" required>ID</label>
+                                <input class="form-input" id="id" name="id" type="number" placeholder="0"/>
+                            </div>
+
+                            <div class="form-item1">
+                                <label class="form-label" for="hoten">Họ và tên</label>
+                                <input class="form-input" id="hoten" name="hoten" type="text" placeholder="Nhập đầy đủ họ và tên"/>
+                            </div>
+
+                            <div class="form-item1">
+                                <label class="form-label" for="ngaysinh">Ngày sinh</label>
+                                <input class="form-input" type="date" name="ngaysinh" id="ngaysinh" value="1980-01-01">
+                            </div>
+
+                            <div class="form-item1" class="form-item2">
+                                <label class="form-label" for="finish_node">Giới tính</label>
+                                <div id="radio2" class="form-radio">
+                                    <input type="radio" name="direction" value="1" checked> Nam<br>
+                                    <input type="radio" name="direction" value="0" > Nữ</br>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div id="form-right" class="form-block">
+
+
+                            <div class="form-item1">
+                                <label class="form-label" for="first_node">Địa chỉ</label>
+                                <select class="form-option" name="first_node" id="first_node">
+                                    
+                                </select>
+                            </div>
+
+                            <div class="form-item1">
+                                <label class="form-label" for="last_node">SĐT</label>
+                                <select class="form-option" name="last_node" id="last_node">
+                                    
+                                </select>
+                            </div>
+
+                            <button class="form-button" id="button-add" type="submit" onclick="add_edge()">Thêm cạnh</button>
+                            <button class="form-button" id="button-delete" type="submit" onclick="delete_edge()">Xoá cạnh</button>
+                        </div>
+
+                        <div id="form-bottom" class="form-block">
+
+                            <div class="form-label" id="label-bottom" >Danh sách cạnh:</div><br>
+                            <div id="list_edge"></div>
+                            <input class="form-input" id="list_input_edge" name="list_input_edge" hidden="true" type="text"/>
+
+                        </div>
+
+                        <button class="form-button" id="button-search" type="submit">Tìm kiếm đường đi</button>
+
+                    </form>
             </div>
         </div>
     </body>
