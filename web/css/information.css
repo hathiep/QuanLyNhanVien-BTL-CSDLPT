@@ -160,3 +160,104 @@ table#tbl-content tr#bottom td {
     width: 15%;
     text-align: left;
 }
+/*crud*/
+#request{
+    float: left;
+}
+#answer{
+    float: left;
+}
+.form {
+    width: 100%;
+    min-width: 400px;
+    min-height: 600px;
+    margin: 3% 0 0 3%;
+    padding: 1%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
+    text-align: center;
+    align-self: baseline;
+}
+#heading {
+    margin: 15px 20px 15px 20px;
+    font-size: 2rem;
+}
+.form-block {
+    margin: 1.5%;
+    padding: 10px 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
+}
+#form-top {
+    width: 97%;
+    float: left;
+}
+#form-left {
+    width: 47%;
+    float: left;
+}
+#form-right {
+    width: 47%;
+    float: left;
+}
+#form-bottom {
+    width: 97%;
+    height: fit-content;
+    display: flex;
+    float: left;
+}
+.form-item1 {
+    height: 60px;
+    display: flex;
+}
+.form-item2{
+    width: 50%;
+    display: flex;
+    float: left;
+}
+.form-item3 {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    float: left;
+}
+.form-label{
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    padding-bottom: 0.6rem;
+    margin-left: 12px;
+    align-self: center;
+    position: absolute;
+}
+#form-label-top {
+    margin-left: 25px;
+}
+.form-input{
+    width: 30%;
+    height: 40px;
+    margin-left: 65%;
+    padding: 8px 10px;
+    font-size: 1.4rem;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    justify-content: right;
+}
+.form-input:hover {
+    border-color: #1dbfaf;
+}
+.form-inputb {
+    width: 70px;
+    min-width: 70px;
+    height: 150px;
+    margin-left: 65%;
+    padding: 8px 10px;
+    font-size: 1.6rem;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    text-align: left;
+}
