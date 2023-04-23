@@ -1,0 +1,149 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none;
+}
+.home-page{
+    width: auto;
+    height: auto;
+    margin-top: 24px;
+    padding: 10px 24px;
+    text-align: center;
+    align-self: center;
+    display: flex;
+}
+.home-heading {
+    width: 100%;
+    height: 10%;
+    background: #1dbfaf;
+    float: left;
+}
+.home-body {
+    width: 100%;
+    height: 90%;
+    min-height: 600px;
+    background: #917a41;
+    float: left;
+}
+.home-menu {
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+.home-main {
+    width: 85%;
+    height: 100%;
+    min-height: 600px;
+    padding-bottom: 24px;
+    background: #f3f3f3;
+    float: left;
+}
+.home-button{
+    margin: 24px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
+    text-align: center;
+    align-self: center;
+}
+h1 {
+    padding: 12px 12px;
+    color: yellow;
+}
+li {
+    list-style: none;
+    margin: 12px 12px 12px 12px;
+    padding: 12px 12px;
+    background: #fff;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
+}
+a:hover{
+    color: #1dbfaf;
+    font-size: 120%;
+}
+/*main*/
+.main-top{
+    width: 100%;
+    min-height: 40px;
+    background: purple;
+}
+.main-block{
+    width: 98%;
+    height: 350px;
+    margin: 1% 0 0 1%;
+    padding: 1%;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
+    text-align: center;
+    align-self: baseline;
+}
+.table-head{
+      float:left;
+    width: 100%;
+    height: 30px;
+    margin-right: 30px;
+    align-self: baseline;
+}
+.main-table{
+    float:left;
+    width: 100%;
+    height: 300px;
+    margin-top: 0.6%;
+    align-self: baseline;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+.right{
+    text-align: right;
+}
+tr{
+    margin-left: 0;
+}
+td{
+    text-align: left;
+}
+#header{
+    text-align: center;
+}
+table#header th {
+    border-right: solid 1px #000
+}
+table#header th#right-border {
+    padding: 0 4px 0 3px;
+    border-right: none;
+}
+table#tbl-content td {
+    padding: 10px;
+    border-bottom: solid 1px #bbb;
+    border-right: solid 1px #bbb;
+}
+table#tbl-content tr#bottom td {
+    border-bottom: none;
+}
+#box {
+    width: 100%;
+    height: 300px;
+    overflow-y: auto;
+    border-top: none;
+}
+#tbl-content {
+    width: 100%;
+    table-layout: fixed;
+    background: #fff;
+}
+#header {
+    width: 100%;
+    padding-right: 19px;
+    text-align: left;
+    table-layout: fixed;
+}
