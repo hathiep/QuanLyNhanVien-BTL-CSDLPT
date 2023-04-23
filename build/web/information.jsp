@@ -32,65 +32,48 @@
                 <div class="main-top">
                     
                 </div>
-                
                     
                 <div class="main-block">
-                    <div id="boundary" style="margin-right:-2px;background:darkkhaki;">
+                    <div style="margin-right:-2px;background:darkkhaki;">
                         <table id="header" cellpadding="3" cellspacing="0" border="0">
                             <tr>
-                                    <th>ID</th>
-                                    <th>Họ và tên</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Giới tính</th>
-                                    <th>Địa chỉ</th>
-                                    <th>SĐT</th>
-                                    <th>Chức vụ</th>
-                                    <th>Mức Lương</th>
-                                </tr>
+                                <th class="col1">ID</th>
+                                <th class="col3">Họ và tên</th>
+                                <th class="col2">Ngày sinh</th>
+                                <th class="col2">Giới tính</th>
+                                <th class="col4">Địa chỉ</th>
+                                <th class="col2">SĐT</th>
+                                <th class="col3">Chức vụ</th>
+                                <th class="col2">Mức Lương</th>
+                                <th class="col3">Chú thích</th>
+                            </tr>
                         </table>
                     </div>
                     <div id="box">
                         <table id="tbl-content" cellpadding="3" cellspacing="0" border="0">
-                            <%
-                                List<NV> list = (List<NV>)request.getAttribute("listNV");
-                                for(NV i:list){
-                            %>
-                                        <tr>
-                                            <td><%=i.getId()%></td>
-                                            <td><%=i.getHoten()%></td>
-                                            <td class="right"><%=i.getNgaysinh()%></td>
-                                            <td><%=i.getGioitinh()%></td>
-                                            <td><%=i.getDiachi()%></td>
-                                            <td><%=i.getSdt()%></td>
-                                            <td><%=i.getChucvu()%></td>
-                                            <td class="right"><%=i.getMucluong()%></td>
-                                        </tr>
-                            <%
-                                }
-                            %>
+                        <%
+                            List<NV> list = (List<NV>)request.getAttribute("listNV");
+                            for(NV i:list){
+                        %>
+                                <tr>
+                                    <td class="col1"><%=i.getId()%></td>
+                                    <td class="col3"><%=i.getHoten()%></td>
+                                    <td class="col2"><%=i.getNgaysinh()%></td>
+                                    <td class="col2"><%=i.getGioitinh()%></td>
+                                    <td class="col4"><%=i.getDiachi()%></td>
+                                    <td class="col2"><%=i.getSdt()%></td>
+                                    <td class="col3"><%=i.getChucvu()%></td>
+                                    <td class="right" class="col2"><%=i.getMucluong()%></td>
+                                    <td class="col3"></td>
+                                </tr>
+                         <%
+                            }
+                        %>
                         </table>
                     </div>
-<!--                    <div class="main-table">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Họ và tên</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Giới tính</th>
-                                    <th>Địa chỉ</th>
-                                    <th>SĐT</th>
-                                    <th>Chức vụ</th>
-                                    <th id="header">Mức Lương</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        </table>
-                        
-                    </div>-->
                 </div>
                 
-                <div class="main-block">
+                <div class="main-block" id="crud">
                     
                 </div>
             </div>
