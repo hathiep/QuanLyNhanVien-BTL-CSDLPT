@@ -2,26 +2,30 @@ package model;
 
 public class NV {
     private int id;
-    private String hoten, ngaysinh, gioitinh, diachi, sdt, chucvu;
+    private String hoten, ngaysinh, gioitinh, sdt, diachi, chinhanh, chucvu;
     private int mucluong;
+    private String chuthich="";
 
     public NV() {
     }
 
-    public NV(int id, String hoten, String ngaysinh, String gioitinh, String diachi, String sdt, String chucvu, int mucluong) {
+    public NV(int id, String hoten, String ngaysinh, String gioitinh, String sdt, String diachi, String chinhanh, String chucvu, int mucluong, String chuthich) {
         this.id = id;
         this.hoten = hoten;
         this.ngaysinh = ngaysinh;
         this.gioitinh = gioitinh;
-        this.diachi = diachi;
         this.sdt = sdt;
+        this.diachi = diachi;
+        this.chinhanh = chinhanh;
         this.chucvu = chucvu;
         this.mucluong = mucluong;
+        this.chuthich = chuthich;
     }
 
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -29,6 +33,7 @@ public class NV {
     public String getHoten() {
         return hoten;
     }
+
     public void setHoten(String hoten) {
         this.hoten = hoten;
     }
@@ -36,6 +41,7 @@ public class NV {
     public String getNgaysinh() {
         return ngaysinh;
     }
+
     public void setNgaysinh(String ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
@@ -43,27 +49,39 @@ public class NV {
     public String getGioitinh() {
         return gioitinh;
     }
+
     public void setGioitinh(String gioitinh) {
         this.gioitinh = gioitinh;
-    }
-
-    public String getDiachi() {
-        return diachi;
-    }
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
     }
 
     public String getSdt() {
         return sdt;
     }
+
     public void setSdt(String sdt) {
         this.sdt = sdt;
+    }
+
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getChinhanh() {
+        return chinhanh;
+    }
+
+    public void setChinhanh(String chinhanh) {
+        this.chinhanh = chinhanh;
     }
 
     public String getChucvu() {
         return chucvu;
     }
+
     public void setChucvu(String chucvu) {
         this.chucvu = chucvu;
     }
@@ -71,14 +89,17 @@ public class NV {
     public int getMucluong() {
         return mucluong;
     }
+
     public void setMucluong(int mucluong) {
         this.mucluong = mucluong;
     }
 
-    @Override
-    public String toString() {
-        return "NV{" + "id=" + id + ", hoten=" + hoten + ", ngaysinh=" + ngaysinh + ", gioitinh=" + gioitinh + ", diachi=" + diachi + ", sdt=" + sdt + ", chucvu=" + chucvu + ", mucluong=" + mucluong + '}';
+    public String getChuthich() {
+        return chuthich;
     }
-    
+
+    public void setChuthich(String chuthich) {
+        this.chuthich = chuthich;
+    }
     
 }

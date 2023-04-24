@@ -9,6 +9,7 @@ import context.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +20,8 @@ import model.NV;
  *
  * @author havanthiep
  */
-public class InformationServlet extends HttpServlet {
+@WebServlet(name="AddServlet", urlPatterns={"/add"})
+public class AddServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,12 +33,32 @@ public class InformationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int id = Integer.parseInt(request.getParameter("id"));
+        String hoten = request.getParameter("hoten");
+        String ngaysinh = request.getParameter("ngaysinh");
+        String gioitinh = request.getParameter("gioitinh");
+        String sdt = request.getParameter("sdt");
+        String diachi = request.getParameter("diachi");
+        String chinhanh = request.getParameter("chinhanh");
+        String chucvu = request.getParameter("chucvu");
+        int mucluong = Integer.parseInt(request.getParameter("mucluong"));
+        String chuthich = request.getParameter("chuthich");
+        
         DAO dao = new DAO();
-        List<NV> listNV = (List<NV>) dao.getAllNV();
-              
-        if(listNV.size()!=0){
-            request.setAttribute("listNV", listNV);
-            request.getRequestDispatcher("information.jsp").forward(request, response);
+        List<NV> list = dao.getAllNV();
+        for(NV i:list){
+            if(i.getId()==id){
+                request.setAttribute("error", "Id đã tồn tại trong danh sách!");
+                request.getRequestDispatcher("information").forward(request, response);
+            }
+        }
+        if(hoten.split("\\s+").length<2){
+            request.setAttribute("error", "Vui lòng điền đầy đủ họ và tên!");
+            request.getRequestDispatcher("information").forward(request, response);
+        }
+        else{
+            dao.addNV(id, hoten, ngaysinh, gioitinh, sdt, diachi, chinhanh, chucvu, mucluong, chuthich);
+            response.sendRedirect("information");
         }
     } 
 

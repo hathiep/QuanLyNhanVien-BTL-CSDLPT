@@ -29,7 +29,7 @@ a {
     width: 100%;
     height: 90%;
     min-height: 600px;
-    background: #917a41;
+    background: #868686;
     float: left;
 }
 .home-menu {
@@ -78,17 +78,21 @@ a:hover{
 }
 .main-block{
     width: 98%;
-    height: 400px;
+    height: fit-content;
+    min-height: 350px;
     margin: 1% 0 0 1%;
     padding: 1%;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
     text-align: center;
     align-self: baseline;
 }
+#block-table{
+    max-height: 350px;
+}
 .table-head{
-      float:left;
+    float:left;
     width: 100%;
     height: 30px;
     margin-right: 30px;
@@ -97,17 +101,23 @@ a:hover{
 .main-table{
     float:left;
     width: 100%;
-    height: 300px;
+    height: 200px;
     margin-top: 0.6%;
     align-self: baseline;
     overflow-x:hidden;
     overflow-y:auto;
+}
+#sort{
+    width: 100%;
+    height: 40px;
+    text-align: left;
 }
 .right{
     text-align: right;
 }
 table#header th {
     padding: 0.8% 0.2%;
+    word-wrap: break-word;
     border-right: solid 1px #000;
     text-align: center;
 }
@@ -116,7 +126,8 @@ table#header th#right-border {
     border-right: none;
 }
 table#tbl-content td {
-    padding: 0.8%;
+    padding: 0.6%;
+    word-wrap: break-word;
     border-bottom: solid 1px #bbb;
     border-right: solid 1px #bbb;
 }
@@ -125,7 +136,7 @@ table#tbl-content tr#bottom td {
 }
 #box {
     width: 100%;
-    height: 300px;
+    height: 240px;
     border: solid 1px #bbb;
     overflow-y: auto;
     border-top: none;
@@ -141,24 +152,32 @@ table#tbl-content tr#bottom td {
     text-align: left;
     table-layout: fixed;
 }
-.right{
-    text-align: right;
-}
 .col1{
     width: 4%;
     text-align: center;
 }
 .col2{
-    width: 9%;
+    width: 8%;
+    min-width: 100px;
     text-align: center;
 }
 .col3{
-    width: 15%;
+    width: 14%;
     text-align: left
 }
 .col4{
-    width: 15%;
+    width: 14%;
     text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.col4:hover{
+    white-space: pre-line;
+    overflow: visible;
+}
+.row0{
+    background: #e3e3e3;
 }
 /*crud*/
 #request{
@@ -169,52 +188,60 @@ table#tbl-content tr#bottom td {
 }
 .form {
     width: 100%;
-    min-width: 400px;
-    min-height: 600px;
-    margin: 3% 0 0 3%;
-    padding: 1%;
+    min-width: 300px;
+    height: 100%;
+/*    margin: 3% 0 0 3%;
+    padding: 0.5%;*/
+/*    font-size: 60%;*/
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
+/*    border-radius: 10px;
+    box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;*/
     text-align: center;
     align-self: baseline;
 }
 #heading {
-    margin: 15px 20px 15px 20px;
-    font-size: 2rem;
+    margin: 5px 20px 0px 20px;
+    font-size: 1.5rem;
+}
+#error{
+    margin: 1px 5px 0px 0px;
 }
 .form-block {
-    margin: 1.5%;
-    padding: 10px 5px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;
-}
-#form-top {
-    width: 97%;
-    float: left;
+    margin: 0.5%;
+    width: 35%;
+    min-width: 250px;
+    padding: 10px 2%;
+    border-radius: 6px;
+/*    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 20px 20px rgba(0, 0, 0, 0.02) !important;*/
 }
 #form-left {
-    width: 47%;
+    width: 35%;
+    float: left;
+}
+#form-center {
+    width: 35%;
     float: left;
 }
 #form-right {
-    width: 47%;
+    width: 20%;
+    min-width: 100px;
+    height: fit-content;
     float: left;
 }
 #form-bottom {
     width: 97%;
-    height: fit-content;
-    display: flex;
+    margin: 0;
     float: left;
 }
 .form-item1 {
-    height: 60px;
+    height: 50px;
     display: flex;
+    border-bottom: solid 1px #bbb;
 }
 .form-item2{
-    width: 50%;
+    height: 50px;
+    border-bottom: none;
     display: flex;
-    float: left;
 }
 .form-item3 {
     height: 100%;
@@ -225,10 +252,8 @@ table#tbl-content tr#bottom td {
 }
 .form-label{
     font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    padding-bottom: 0.6rem;
-    margin-left: 12px;
+    font-size: 1rem;
+    line-height: 1.4rem;
     align-self: center;
     position: absolute;
 }
@@ -236,16 +261,35 @@ table#tbl-content tr#bottom td {
     margin-left: 25px;
 }
 .form-input{
-    width: 30%;
-    height: 40px;
-    margin-left: 65%;
+    width: 60%;
+    height: 30px;
+    margin-left: 40%;
     padding: 8px 10px;
-    font-size: 1.4rem;
+    font-size: 1rem;
     border: 1px solid #b3b3b3;
     border-radius: 3px;
     outline: none;
+    align-self: center;
     justify-content: right;
 }
+.form-radio {
+    width: 60%;
+    height: 30px;
+    margin-left: 40%;
+    padding: 0% 15%;
+    align-self: center;
+    text-align: center;
+    font-size: 1rem;
+    justify-content: center;
+    display: flex;
+}
+.radio-label{
+    margin-left: 5%;
+    font-size: 1rem;
+    text-align: center;
+    align-self: center;
+}
+
 .form-input:hover {
     border-color: #1dbfaf;
 }
@@ -260,4 +304,80 @@ table#tbl-content tr#bottom td {
     border-radius: 3px;
     outline: none;
     text-align: left;
+}
+.form-inputb:hover{
+    border-color: #1dbfaf;
+}
+.form-option {
+    width: 30%;
+    height: 40px;
+    margin-left: 65%;
+    padding: 8px 10px;
+    font-size: 1.4rem;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    justify-content: left;
+}
+.form-option:hover {
+    border-color: #1dbfaf;
+}
+#radio2 {
+    width: 55%;
+    margin-left: 40%;
+}
+.form-button {
+    width: 100%;
+    margin: 6px 0 4px 0;
+    padding: 5px 16px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background-color: #1dbfaf;
+    cursor: pointer;
+}
+#button-edit {
+    background-color: rgb(227, 227, 0);
+}
+#button-delete {
+    background-color: #ff3a3a;
+}
+#button-reset {
+    background-color: #9c9c9c;
+}
+#button-add:hover {
+    background-color: #1ac7b6;
+}
+#button-edit:hover {
+    background-color:rgb(233, 233, 30);
+}
+#button-delete:hover {
+    background-color: #ff4d4d;
+}
+#button-reset:hover {
+    background-color: #a9a9a9;
+}
+#label-bottom {
+    align-self: inherit;
+}
+#list_edge {
+    width: 95%;
+    margin-top: 30px;
+    margin-left: 12px;
+    padding-bottom: 0.6rem;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: left;
+    float: left;
+}
+.form-link{
+    margin-top: 15px;
+}
+.form-message {
+    font-size: 1rem;
+    color: red;
 }

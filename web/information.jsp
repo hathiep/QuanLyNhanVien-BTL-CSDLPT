@@ -12,10 +12,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý nhân viên</title>
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css">-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">-->
     <link rel="stylesheet" href="css/information.css">
 </head>
     <body>
@@ -33,16 +29,18 @@
                     
                 </div>
                     
-                <div class="main-block">
-                    <div style="margin-right:-2px;background:darkkhaki;">
+                <div id="block-table" class="main-block">
+                    <div id="sort"><h3>Sắp xếp</h3></div>
+                    <div style="width:100%;margin-right:0;background:#c3c3c3;border:solid 1px #000;" >
                         <table id="header" cellpadding="3" cellspacing="0" border="0">
                             <tr>
                                 <th class="col1">ID</th>
                                 <th class="col3">Họ và tên</th>
                                 <th class="col2">Ngày sinh</th>
                                 <th class="col2">Giới tính</th>
-                                <th class="col4">Địa chỉ</th>
                                 <th class="col2">SĐT</th>
+                                <th class="col4">Địa chỉ</th>
+                                <th class="col2">Chi nhánh</th>
                                 <th class="col3">Chức vụ</th>
                                 <th class="col2">Mức Lương</th>
                                 <th class="col3">Chú thích</th>
@@ -54,17 +52,19 @@
                         <%
                             List<NV> list = (List<NV>)request.getAttribute("listNV");
                             for(NV i:list){
+                                int k = i.getId()%2;
                         %>
-                                <tr>
+                                <tr class="row<%=k%>" onclick="insert(<%=i.getId()%>)">
                                     <td class="col1"><%=i.getId()%></td>
                                     <td class="col3"><%=i.getHoten()%></td>
                                     <td class="col2"><%=i.getNgaysinh()%></td>
                                     <td class="col2"><%=i.getGioitinh()%></td>
-                                    <td class="col4"><%=i.getDiachi()%></td>
                                     <td class="col2"><%=i.getSdt()%></td>
+                                    <td class="col4"><%=i.getDiachi()%></td>
+                                    <td class="col2"><%=i.getChinhanh()%></td>
                                     <td class="col3"><%=i.getChucvu()%></td>
                                     <td class="right" class="col2"><%=i.getMucluong()%></td>
-                                    <td class="col3"></td>
+                                    <td class="col3"><%=i.getChuthich()%></td>
                                 </tr>
                          <%
                             }
@@ -76,91 +76,98 @@
 <!--                <div class="main-block" id="crud">
                     
                 </div>-->
-                <form method="post" action="algorithmcontrol" class="main-block">
+                <div id="block-table" class="main-block">
+                    <form method="post" action="" class="form" id="forminfo">
 
                         <h2 id="heading">Chỉnh sửa thông tin nhân viên</h1>
+                        <h4 class="form-message" id="error">${error}</h4>
 
-<!--                        <div id="form-top" class="form-block">
-
-                            <div class="form-item2" class="form-item1">
-                                <label class="form-label" for="type_algorithm">Thuật toán</label>
-                                <div id="radio1" class="form-radio">
-                                    <input type="radio" name="type_algorithm" value="1" checked> BFS<br>
-                                    <input type="radio" name="type_algorithm" value="0" > DFS</br>
-                                </div>
-                            </div>
-
-                            <div class="form-item2" class="form-item1">
-                                <label class="form-label" id="form-label-top" for="direction">Chiều</label>
-                                <div id="radio2" class="form-radio">
-                                    <input type="radio" name="direction" value="1" checked> Có hướng<br>
-                                    <input type="radio" name="direction" value="0" > Vô hướng</br>
-                                </div>
-                            </div>
-
-                        </div>-->
-
-                        <div id="form-left" class="form-block">
-
+                        <div id="form-left" class="form-block" onclick="hideerror()">
+                            
                             <div class="form-item1">
-                                <label class="form-label" for="id" required>ID</label>
-                                <input class="form-input" id="id" name="id" type="number" placeholder="0"/>
+                                <label class="form-label" for="id">ID</label>
+                                <input class="form-input" id="id" name="id" type="text" value="" placeholder="Nhập ID" required/>
                             </div>
 
                             <div class="form-item1">
                                 <label class="form-label" for="hoten">Họ và tên</label>
-                                <input class="form-input" id="hoten" name="hoten" type="text" placeholder="Nhập đầy đủ họ và tên"/>
+                                <input class="form-input" id="hoten" name="hoten" type="text" value="" placeholder="Nhập đầy đủ họ và tên" required/>
                             </div>
 
                             <div class="form-item1">
                                 <label class="form-label" for="ngaysinh">Ngày sinh</label>
-                                <input class="form-input" type="date" name="ngaysinh" id="ngaysinh" value="1980-01-01">
+                                <input class="form-input" type="date" name="ngaysinh" id="ngaysinh" value="" value="1980-01-01" required>
                             </div>
 
-                            <div class="form-item1" class="form-item2">
-                                <label class="form-label" for="finish_node">Giới tính</label>
-                                <div id="radio2" class="form-radio">
-                                    <input type="radio" name="direction" value="1" checked> Nam<br>
-                                    <input type="radio" name="direction" value="0" > Nữ</br>
+                            <div class="form-item1">
+                                <label class="form-label" for="gioitinh">Giới tính</label>
+                                <div class="form-radio">
+                                    <input id="radio1" type="radio" name="gioitinh" value="Nam">
+                                    <label for="radio1" class="radio-label">Nam</label>
+                                    <input id="radio2" type="radio" name="gioitinh" value="Nữ">
+                                    <label for="radio2" class="radio-label">Nữ</label>
                                 </div>
                             </div>
 
+                            <div class="form-item1">
+                                <label class="form-label" for="sdt" required>SĐT</label>
+                                <input class="form-input" id="sdt" name="sdt" type="text" value="" placeholder="Nhập số điện thoại" required/>
+                            </div>
+
+                        </div>
+
+                        <div id="form-center" class="form-block">
+
+
+                            <div class="form-item1">
+                                <label class="form-label" for="diachi">Địa chỉ</label>
+                                <input class="form-input" id="diachi" name="diachi" type="text" value="" placeholder="Nhập địa chỉ" required/>
+                            </div>
+                            
+                            <div class="form-item1">
+                                <label class="form-label" for="chinhanh">Chi nhánh</label>
+                                <input class="form-input" id="chinhanh" name="chinhanh" type="text" value="" placeholder="Nhập chi nhánh" required/>
+                            </div>
+
+                            <div class="form-item1">
+                                <label class="form-label" for="chucvu">Chức vụ</label>
+                                <input class="form-input" id="chucvu" name="chucvu" type="text" value="" placeholder="Nhập chức vụ" required/>
+                            </div>
+                            
+                            <div class="form-item1">
+                                <label class="form-label" for="mucluong">Mức lương</label>
+                                <input class="form-input" id="mucluong" name="mucluong" type="text" value="" placeholder="Nhập mức lương" required/>
+                            </div>
+                            
+                            <div class="form-item1">
+                                <label class="form-label" for="chuthich">Chú thích</label>
+                                <input class="form-input" id="chuthich" name="chuthich" type="text" value=""  placeholder="Nhập nếu có"/>
+                            </div>
 
                         </div>
 
                         <div id="form-right" class="form-block">
-
-
-                            <div class="form-item1">
-                                <label class="form-label" for="first_node">Địa chỉ</label>
-                                <select class="form-option" name="first_node" id="first_node">
-                                    
-                                </select>
+                            <div class="form-item2">
+                                <button class="form-button" id="button-add" type="submit" formaction="add">Thêm</button>
                             </div>
-
-                            <div class="form-item1">
-                                <label class="form-label" for="last_node">SĐT</label>
-                                <select class="form-option" name="last_node" id="last_node">
-                                    
-                                </select>
+                            <div class="form-item2">
+                                <button class="form-button" id="button-edit" type="submit" formaction="update">Sửa</button>
                             </div>
-
-                            <button class="form-button" id="button-add" type="submit" onclick="add_edge()">Thêm cạnh</button>
-                            <button class="form-button" id="button-delete" type="submit" onclick="delete_edge()">Xoá cạnh</button>
+                            <div class="form-item2">
+                                <button class="form-button" id="button-delete" type="submit" action="deleteNV()">Xoá</button>
+                            </div>
+                            <div class="form-item2">
+                                <button class="form-button" id="button-reset" type="reset" action="resetForm()">Reset</button>
+                            </div>
+<!--                            <div class="form-item2">
+                                <span class="form-message" id="error">${error}</span>
+                            </div>-->
                         </div>
-
-                        <div id="form-bottom" class="form-block">
-
-                            <div class="form-label" id="label-bottom" >Danh sách cạnh:</div><br>
-                            <div id="list_edge"></div>
-                            <input class="form-input" id="list_input_edge" name="list_input_edge" hidden="true" type="text"/>
-
-                        </div>
-
-                        <button class="form-button" id="button-search" type="submit">Tìm kiếm đường đi</button>
-
+                      
                     </form>
+                </div>
             </div>
         </div>
     </body>
+    <script src="js/information.js"></script>
 </html>
